@@ -3,16 +3,16 @@ from field import *
 from neighborresolver import *
 
 class LoadBoard:
-  def __init__(_self, rawBoard):
-    _self.board = Board();
+  def __init__(self, rawBoard):
+    self.board = Board();
 
     for rawIndex, raw in enumerate(rawBoard):
       tmpRow = []
       for cellIndex, cell in enumerate(raw):
         tmpRow.append(Field(cellIndex, rawIndex, str(cell)))
-      _self.board.addRow(tmpRow)
+      self.board.add_row(tmpRow)
     
-    NeighborResolver(_self.board).resolve()
+    NeighborResolver(self.board).resolve()
 
-  def getBoard(_self):
-    return _self.board
+  def get_board(self):
+    return self.board

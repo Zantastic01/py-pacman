@@ -5,16 +5,16 @@ class Board:
   LEFT = '3'
   RIGHT = '4'
   fields = []
-  def addRow(_self, row):
-    _self.fields.append(row);
+  def add_row(self, row):
+    self.fields.append(row);
 
-  def get(_self, x, y):
-    maxY = len(_self.fields)-1
+  def get(self, x, y):
+    maxY = len(self.fields)-1
     if y > maxY:
       return None
 
-    maxX = len(_self.fields[y])-1
+    maxX = len(self.fields[y])-1
     if x > maxX:
       return None
 
-    return _self.fields[y][x]
+    return self.fields[y][x]

@@ -1,26 +1,26 @@
 class Field:
-  def __init__(_self, x, y, fieldType):
-    _self.x = x
-    _self.y = y
-    _self.fieldType = fieldType
+  def __init__(self, x, y, fieldType):
+    self.x = x
+    self.y = y
+    self.fieldType = fieldType
 
-  def setNeighbors(_self, neighbors):
-    _self.neighbors = neighbors
+  def set_neighbors(self, neighbors):
+    self.neighbors = neighbors
 
-  def get(_self, direction):
-    if direction in _self.neighbors:
-      return _self.neighbors[direction]
+  def get(self, direction):
+    if direction in self.neighbors:
+      return self.neighbors[direction]
 
     return None
 
-  def getTop(_self):
-    return _self.get('top')
+  def get_top(self):
+    return self.get('top')
 
-  def getBottom(_self):
-    return _self.get('bottom')
+  def get_bottom(self):
+    return self.get('bottom')
 
-  def getLeft(_self):
-    return _self.get('left')
+  def get_left(self):
+    return self.get('left')
 
-  def getRight(_self):
-    return _self.get('right')
+  def get_right(self):
+    return self.get('right')
