@@ -1,4 +1,4 @@
-from Board import *
+from pacman import *
 
 board = SimpleBoard().get_board()
 

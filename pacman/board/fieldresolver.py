@@ -1,15 +1,17 @@
 from board import *
+from ..monster import *
+from ..pacman import *
 
-class NeighborResolver:
+class FieldResolver:
   def __init__(self, board):
     self.board = board
 
   def resolve(self):
     for row in self.board.fields:
       for cell in row:
-        self.resolve_neighbor(cell)
+        self.resolve_field(cell)
 
-  def resolve_neighbor(self, field):
+  def resolve_field(self, field):
     neighbor = {}
     for char in field.fieldType:
       if char == Board.WALL:
@@ -22,4 +24,10 @@ class NeighborResolver:
         neighbor['left'] = self.board.get(field.x-1, field.y)
       elif char == Board.RIGHT:
         neighbor['right'] = self.board.get(field.x+1, field.y)
+      elif char == Board.MONSTER:
+        monster = Monster(field)
+        field.add_monster(monster)
+      elif char == Board.PACMAN:
+        pacman = Pacman(field)
+        field.add_pacman(pacman)
     field.set_neighbors(neighbor)

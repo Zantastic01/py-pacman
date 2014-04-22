@@ -1,6 +1,6 @@
 from board import *
 from field import *
-from neighborresolver import *
+from fieldresolver import *
 
 class LoadBoard:
   def __init__(self, rawBoard):
@@ -12,7 +12,7 @@ class LoadBoard:
         tmpRow.append(Field(cellIndex, rawIndex, str(cell)))
       self.board.add_row(tmpRow)
     
-    NeighborResolver(self.board).resolve()
+    FieldResolver(self.board).resolve()
 
   def get_board(self):
     return self.board
