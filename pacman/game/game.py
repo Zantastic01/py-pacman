@@ -23,7 +23,7 @@ class Game:
 	eventListener = EventListener();
 	monsters = []
 	pacman = []
-	board = []
+	board = None
 	ended = False
 
 	def __init__(self):
@@ -35,10 +35,10 @@ class Game:
 		self.eventListener.dispatch('game', self)
 
 	def initListeners(self):
-		self.eventListener.add('init', PacmanInitListener(), 'onInit')
-		self.eventListener.add('init', BoardInitListener(), 'onInit')
-		self.eventListener.add('init', MonsterInitListener(), 'onInit')
-		self.eventListener.add('game', GameListener(), 'onGame')
+		self.eventListener.add('init', BoardInitListener(), 'on_init')
+		self.eventListener.add('init', PacmanInitListener(), 'on_init')
+		self.eventListener.add('init', MonsterInitListener(), 'on_init')
+		self.eventListener.add('game', GameListener(), 'on_game')
 
 	def gameListeners(self):
 		self.controlListeners()
@@ -46,14 +46,14 @@ class Game:
 		self.viewListeners()
 
 	def controlListeners(self):
-		self.eventListener.add('control', MonsterCtrlListener(), 'onControl')
-		self.eventListener.add('control', PacmanCtrlListener(), 'onControl')
+		self.eventListener.add('control', MonsterCtrlListener(), 'on_control')
+		self.eventListener.add('control', PacmanCtrlListener(), 'on_control')
 
 	def rulesListeners(self):
-		self.eventListener.add('rules', EndGameListener(), 'onRules')
+		self.eventListener.add('rules', EndGameListener(), 'on_rules')
 
 	def viewListeners(self):
-		self.eventListener.add('view', PygameViewListener(), 'onView')
+		self.eventListener.add('view', PygameViewListener(), 'on_view')
 
 	def isEnded(self):
 		return self.ended

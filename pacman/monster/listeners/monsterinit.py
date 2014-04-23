@@ -1,3 +1,3 @@
 class MonsterInitListener:
-	def onInit(self, game):
+	def on_init(self, game):
 		print 'MonsterInitListener event'

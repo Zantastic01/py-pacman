@@ -1,3 +1,3 @@
 class PygameViewListener:
-  def onView(self, event):
+  def on_view(self, event):
     print 'PygameViewListener listener'

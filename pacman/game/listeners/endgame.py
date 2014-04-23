@@ -1,3 +1,3 @@
 class EndGameListener:
-  def onRules(self, event):
+  def on_rules(self, event):
     print 'EndGameListener listener'

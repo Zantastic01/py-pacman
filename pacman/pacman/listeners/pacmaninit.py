@@ -1,3 +1,3 @@
 class PacmanInitListener:
-	def onInit(self, game):
+	def on_init(self, game):
 		print 'PacmanInitListener listener'

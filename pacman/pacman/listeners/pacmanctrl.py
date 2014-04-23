@@ -1,3 +1,3 @@
 class PacmanCtrlListener:
-  def onControl(self, game):
+  def on_control(self, game):
     print 'PacmanCtrlListener listener'
