@@ -1,1 +1,2 @@
-from addmonster import *
+from monsterctrl import *
+from monsterinit import *

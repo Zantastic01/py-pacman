@@ -1,1 +1,2 @@
-from addpacman import *
+from pacmanctrl import *
+from pacmaninit import *

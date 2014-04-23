@@ -1,1 +1,1 @@
-from initboard import *
+from boardinit import *

@@ -1,28 +1,61 @@
 from eventlistener import *
+
+from listeners import *
 from ..pacman.listeners import *
-from ..monster.listeners import *
 from ..board.listeners import *
+from ..monster.listeners import *
+
+# init
+# game
+# 	control
+# 		MonsterCtrl
+# 		PacmanCtrl
+# 	rules
+# 		EndGameRule
+# 	view
+# 		PygameView
+# 	next
+# 		if game.end == false
+# 			game
+
 
 class Game:
+	eventListener = EventListener();
 	monsters = []
 	pacman = []
 	board = []
+	ended = False
 
 	def __init__(self):
-		self.eventListener = EventListener();
-		self.addBoardListeners()
-		self.addPacmanListeners()
-		self.addMonsterListeners()
-		self.addInitListeners()
+		self.initListeners()
+		self.gameListeners()
 
-	def addBoardListeners(self):
-		self.eventListener.add('game.init', InitBoardListener, 'onInit')
-		
-	def addPacmanListeners(self):
-		self.eventListener.add('game.init.add_pacman', AddPacmanListener, 'onInit')
+	def start(self):
+		self.eventListener.dispatch('init', self)
+		self.eventListener.dispatch('game', self)
 
-	def addMonsterListeners(self):
-		self.eventListener.add('game.init.add_monster', AddMonsterListener, 'onInit')
+	def initListeners(self):
+		self.eventListener.add('init', PacmanInitListener(), 'onInit')
+		self.eventListener.add('init', BoardInitListener(), 'onInit')
+		self.eventListener.add('init', MonsterInitListener(), 'onInit')
+		self.eventListener.add('game', GameListener(), 'onGame')
 
-	def addInitListeners(self):
-		self.eventListener.add('game.init', InitBoardListener, 'onInit')
+	def gameListeners(self):
+		self.controlListeners()
+		self.rulesListeners()
+		self.viewListeners()
+
+	def controlListeners(self):
+		self.eventListener.add('control', MonsterCtrlListener(), 'onControl')
+		self.eventListener.add('control', PacmanCtrlListener(), 'onControl')
+
+	def rulesListeners(self):
+		self.eventListener.add('rules', EndGameListener(), 'onRules')
+
+	def viewListeners(self):
+		self.eventListener.add('view', PygameViewListener(), 'onView')
+
+	def isEnded(self):
+		return self.ended
+
+

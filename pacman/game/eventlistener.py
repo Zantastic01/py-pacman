@@ -10,6 +10,7 @@ class EventListener:
 		}
 
 		_self.listeners[eventName].append(newListener)
+
 	def dispatch(_self, eventName, eventSubject):
 		if eventName not in _self.listeners:
 			return;
