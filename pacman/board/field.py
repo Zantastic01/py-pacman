@@ -5,6 +5,7 @@ class Field:
     self.fieldType = fieldType
     self.pacman = []
     self.monsters = []
+    self.neighbors = {}
 
   def set_neighbors(self, neighbors):
     self.neighbors = neighbors

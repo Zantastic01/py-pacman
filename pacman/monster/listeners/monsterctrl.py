@@ -1,4 +1,5 @@
-from random import randint
+import random
+from ...game import *
 
 class MonsterCtrlListener:
   SPEED = 20
@@ -8,18 +9,21 @@ class MonsterCtrlListener:
       self.on_control_monster(game, monster)
 
   def on_control_monster(self, game, monster):
-    monster.shift = monster.shift + self.SPEED
+    directions = Directions(monster.field)
 
+    if directions.is_wrong(monster.direction):
+      monster.direction = directions.random()
+
+    if self.change_direction():
+      monster.direction = directions.random()
+      monster.shift = -monster.shift
+
+    monster.shift = monster.shift + self.SPEED
     if monster.shift > 100:
       monster.shift = 0
       monster.field = monster.field.get(monster.direction)
-
-    if (self.change_direction()):
-      monster.direction = self.random_direction(monster.field)
-    print str(monster.field.x) + '_' + str(monster.field.y)
+      print str(monster.field.x) + '_' + str(monster.field.y)
 
   def change_direction(self):
-    return [True, False][randint(0, 1)]
+    return random.choice([True, False])
 
-  def random_direction(self, field):
-    return field.keys[randint(0, len(field.keys))]
