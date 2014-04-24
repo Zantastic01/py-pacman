@@ -1,4 +1,5 @@
+from ...view import *
+
 class PygameViewListener:
-  def on_view(self, event):
-    pass
-    #print 'PygameViewListener listener'
+  def on_view(self, game):
+    game.view = View();

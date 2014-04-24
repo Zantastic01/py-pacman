@@ -25,6 +25,7 @@ class Game:
 	pacman = []
 	board = None
 	ended = False
+	view = None
 
 	def __init__(self):
 		self.initListeners()
