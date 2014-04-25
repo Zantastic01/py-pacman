@@ -15,6 +15,7 @@ class FieldResolver:
     neighbor = {}
     for char in field.fieldType:
       if char == Board.WALL:
+        field.wall = True
         return
       elif char == Board.TOP:
         neighbor['top'] = self.board.get(field.x, field.y-1)

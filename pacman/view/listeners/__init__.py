@@ -1,0 +1,1 @@
+from viewinit import *

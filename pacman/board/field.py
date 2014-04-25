@@ -1,4 +1,4 @@
-class Field:
+class Field():
   def __init__(self, x, y, fieldType):
     self.x = x
     self.y = y
@@ -6,6 +6,7 @@ class Field:
     self.pacman = []
     self.monsters = []
     self.neighbors = {}
+    self.wall = False
 
   def set_neighbors(self, neighbors):
     self.neighbors = neighbors

@@ -7,8 +7,15 @@ class Board:
   MONSTER = '5'
   PACMAN = '6'
   fields = []
+
   def add_row(self, row):
     self.fields.append(row);
+
+  def max_y(self):
+    return len(self.fields)
+
+  def max_x(self):
+    return len(self.fields[0])
 
   def get(self, x, y):
     maxY = len(self.fields)-1
