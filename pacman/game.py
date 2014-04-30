@@ -1,10 +1,6 @@
 from eventlistener import *
 
 from listeners import *
-from ..pacman.listeners import *
-from ..board.listeners import *
-from ..monster.listeners import *
-from ..view.listeners import *
 
 # init
 # game

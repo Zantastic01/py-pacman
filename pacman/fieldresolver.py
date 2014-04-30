@@ -1,6 +1,6 @@
 from board import *
-from ..monster import *
-from ..pacman import *
+from monster import *
+from pacman import *
 
 class FieldResolver:
   def __init__(self, board):

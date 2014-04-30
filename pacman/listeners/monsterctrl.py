@@ -1,5 +1,6 @@
 import random
-from ...game import *
+from ..game import *
+from ..directions import *
 
 class MonsterCtrlListener:
   SPEED = 20

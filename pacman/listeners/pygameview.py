@@ -1,4 +1,4 @@
-from ...view import *
+from ..view import *
 
 class PygameViewListener:
   def on_view(self, game):
