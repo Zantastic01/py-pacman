@@ -41,12 +41,13 @@ class Game:
 		self.eventListener.add('init', PacmanInitListener(), 'on_init')
 		self.eventListener.add('init', MonsterInitListener(), 'on_init')
 		self.eventListener.add('init', ViewInitListener(), 'on_init')
-		self.eventListener.add('game', GameListener(), 'on_game')
+		self.eventListener.add('game', GameListener(), 'on_game')		
 
 	def gameListeners(self):
 		self.controlListeners()
 		self.rulesListeners()
 		self.viewListeners()
+		self.eventListener.add('tick', TickListener(), 'on_tick')
 
 	def controlListeners(self):
 		self.eventListener.add('control', MonsterCtrlListener(), 'on_control')

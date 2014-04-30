@@ -6,3 +6,4 @@ class GameListener:
       eventListener.dispatch('control', game)
       eventListener.dispatch('rules', game)
       eventListener.dispatch('view', game)
+      eventListener.dispatch('tick', game)
