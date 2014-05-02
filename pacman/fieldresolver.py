@@ -12,23 +12,17 @@ class FieldResolver:
         self.resolve_field(cell)
 
   def resolve_field(self, field):
-    neighbor = {}
-    for char in field.fieldType:
-      if char == Board.WALL:
-        field.wall = True
-        return
-      elif char == Board.TOP:
-        neighbor['top'] = self.board.get(field.x, field.y-1)
-      elif char == Board.BOTTOM:
-        neighbor['bottom'] = self.board.get(field.x, field.y+1)
-      elif char == Board.LEFT:
-        neighbor['left'] = self.board.get(field.x-1, field.y)
-      elif char == Board.RIGHT:
-        neighbor['right'] = self.board.get(field.x+1, field.y)
-      elif char == Board.MONSTER:
-        monster = Monster(field)
-        field.add_monster(monster)
-      elif char == Board.PACMAN:
-        pacman = Pacman(field)
-        field.add_pacman(pacman)
-    field.set_neighbors(neighbor)
+    allNeighbors = {
+      'left': self.board.get(field.x-1, field.y),
+      'right': self.board.get(field.x+1, field.y),
+      'top': self.board.get(field.x, field.y-1),
+      'bottom': self.board.get(field.x, field.y+1)
+    }
+
+    neighbors = {}
+    for direction, neighbor in allNeighbors.iteritems():
+      if neighbor != None and neighbor.wall == False:
+        neighbors[direction] = neighbor
+
+    field.set_neighbors(neighbors)
+

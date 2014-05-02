@@ -1,12 +1,11 @@
 class Field():
-  def __init__(self, x, y, fieldType):
+  def __init__(self, x, y, wall):
     self.x = x
     self.y = y
-    self.fieldType = fieldType
+    self.wall = wall
     self.pacman = []
     self.monsters = []
     self.neighbors = {}
-    self.wall = False
 
   def set_neighbors(self, neighbors):
     self.neighbors = neighbors
@@ -34,4 +33,3 @@ class Field():
 
   def add_monster(self, monster):
     self.monsters.append(monster)
-

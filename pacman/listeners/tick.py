@@ -1,7 +1,7 @@
 import pygame
 
 class TickListener:
-  FPS = 30
+  FPS = 24
   clock = None
   def on_tick(self, game):
     if self.clock == None:

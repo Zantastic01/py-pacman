@@ -1,15 +1,8 @@
 class Board:
-  WALL = '0'
-  TOP = '1'
-  BOTTOM = '2'
-  LEFT = '3'
-  RIGHT = '4'
-  MONSTER = '5'
-  PACMAN = '6'
   fields = []
 
   def add_row(self, row):
-    self.fields.append(row);
+    self.fields.append(row)
 
   def max_y(self):
     return len(self.fields)

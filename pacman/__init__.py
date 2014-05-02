@@ -6,6 +6,7 @@ from fieldresolver import *
 from game import *
 from loadboard import *
 from monster import *
+from monsterresolver import *
 from pacman import *
 from simpleboard import *
 from view import *
