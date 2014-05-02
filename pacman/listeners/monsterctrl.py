@@ -3,7 +3,7 @@ from ..game import *
 from ..directions import *
 
 class MonsterCtrlListener:
-  SPEED = 50
+  SPEED = 20
 
   def on_control(self, game):
     for monster in game.monsters:
