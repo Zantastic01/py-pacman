@@ -1,4 +1,10 @@
 class Pacman:
-	def __init__(self, field):
-		self.field = field
-		print "Utworzylem pacmana w " + str(self.field.x) + '_' + str(self.field.y)
+  SPEED = 20
+
+  def __init__(self, field, direction = 'bottom'):
+    self.shift = 0
+    self.field = field
+    self.direction = direction
+    self.newDirection = direction
+    self.dots = 0
+    print "Utworzylem pacmana w " + str(self.field.x) + '_' + str(self.field.y)

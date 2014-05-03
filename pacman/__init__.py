@@ -1,6 +1,6 @@
 from board import *
 from directions import *
-from eventlistener import *
+from eventdispatcher import *
 from field import *
 from fieldresolver import *
 from game import *

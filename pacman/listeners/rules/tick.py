@@ -1,6 +1,6 @@
 import pygame
 
-class TickListener:
+class TickRuleListener:
   FPS = 24
   clock = None
   def on_tick(self, game):

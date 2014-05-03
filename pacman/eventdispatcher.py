@@ -1,4 +1,4 @@
-class EventListener:
+class EventDispatcher:
 	listeners = {}
 	def add(_self, eventName, listener, methodName):
 		if eventName not in _self.listeners:

@@ -3,9 +3,9 @@ class Field():
     self.x = x
     self.y = y
     self.wall = wall
-    self.pacman = []
-    self.monsters = []
+    self.animals = []
     self.neighbors = {}
+    self.dot = True
 
   def set_neighbors(self, neighbors):
     self.neighbors = neighbors
@@ -28,8 +28,5 @@ class Field():
   def get_right(self):
     return self.get('right')
 
-  def add_pacman(self, pacman):
-    self.pacman.append(pacman)
-
-  def add_monster(self, monster):
-    self.monsters.append(monster)
+  def add_animal(self, animal):
+    self.animals.append(animal)

@@ -35,16 +35,20 @@ class SimpleBoard(LoadBoard):
     ]
 
     monsters = [
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1],
-      [2, 2, 1]
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1]
     ]
 
-    LoadBoard.__init__(self, rawBoard, monsters)
+    pacman = [
+      [1, 1, 1]
+    ]
+
+    LoadBoard.__init__(self, rawBoard, monsters, pacman)
