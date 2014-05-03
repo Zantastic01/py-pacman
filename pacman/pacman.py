@@ -1,5 +1,5 @@
 class Pacman:
-  SPEED = 20
+  SPEED = 40
 
   def __init__(self, field, direction = 'bottom'):
     self.shift = 0
