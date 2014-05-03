@@ -1,2 +1,4 @@
-py-pacman
-=========
+Python Pacman Clone
+===================
+
+in progress..
