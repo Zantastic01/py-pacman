@@ -13,8 +13,11 @@ class MonsterControlListener:
       monster.direction = directions.random()
 
     if self.change_direction():
+      if False == directions.is_wrong(monster.direction):
+        nextField = monster.field.neighbors[monster.direction]
+        directions = Directions(nextField)
       monster.newDirection = directions.random()
 
   def change_direction(self):
-    return random.choice([True, False, True])
+    return 1 == random.choice(range(1, 5))
 
