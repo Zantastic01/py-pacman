@@ -48,7 +48,7 @@ class SimpleBoard(LoadBoard):
     ]
 
     pacman = [
-      [1, 1, 1]
+      [1, 27, 1]
     ]
 
     LoadBoard.__init__(self, rawBoard, monsters, pacman)
