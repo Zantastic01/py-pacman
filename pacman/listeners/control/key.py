@@ -1,10 +1,9 @@
 import pygame
+from ...listener import *
 
-class KeyControlListener:
+class KeyControlListener(Listener):
   def on_control(self, game):
-    eventDispatcher = game.eventDispatcher
-
     events = pygame.event.get()
     for event in events:
       if event.type == pygame.KEYDOWN:
-        eventDispatcher.dispatch('keypressed', [event.key, game])
+        self.eventDispatcher.dispatch('keypressed', [event.key, game])

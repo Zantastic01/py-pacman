@@ -1,6 +1,7 @@
 from ...simpleboard import *
+from ...listener import *
 
-class BoardInitListener:
+class BoardInitListener(Listener):
   def on_init(self, game):
     game.board = SimpleBoard().get_board()
 

@@ -20,8 +20,6 @@ class Game:
 
 	def init_listeners(self):
 		self.eventDispatcher.add('init', BoardInitListener(), 'on_init')
-		self.eventDispatcher.add('init', PacmanInitListener(), 'on_init')
-		self.eventDispatcher.add('init', MonsterInitListener(), 'on_init')
 		self.eventDispatcher.add('init', ViewInitListener(), 'on_init')
 		self.eventDispatcher.add('game', GameListener(), 'on_game')
 

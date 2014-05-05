@@ -1,7 +1,7 @@
-from .. import *
-from .. import *
+from ...listener import *
+from ...directions import *
 
-class ShiftAnimalRuleListener:
+class ShiftAnimalRuleListener(Listener):
   def on_rules(self, game):
     for monster in game.monsters:
       self.on_rule_animal(monster)

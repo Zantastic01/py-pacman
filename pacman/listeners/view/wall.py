@@ -1,4 +1,6 @@
-class WallViewListener:
+from ...listener import *
+
+class WallViewListener(Listener):
   def on_draw(self, event):
     (x, y, view) = event
     screen = view.screen

@@ -1,7 +1,8 @@
 import random
-from .. import *
+from ...listener import *
+from ...directions import *
 
-class MonsterControlListener:
+class MonsterControlListener(Listener):
   def on_control(self, game):
     for monster in game.monsters:
       self.on_control_monster(game, monster)
@@ -14,7 +15,7 @@ class MonsterControlListener:
 
     if self.change_direction():
       if False == directions.is_wrong(monster.direction):
-        nextField = monster.field.neighbors[monster.direction]
+        nextField = monster.next_field()
         directions = Directions(nextField)
       monster.newDirection = directions.random()
 

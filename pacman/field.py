@@ -10,6 +10,9 @@ class Field():
   def set_neighbors(self, neighbors):
     self.neighbors = neighbors
 
+  def get_available_neighbors(self):
+    return self.neighbors.keys()
+
   def get(self, direction):
     if direction in self.neighbors:
       return self.neighbors[direction]

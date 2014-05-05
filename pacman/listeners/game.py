@@ -1,9 +1,7 @@
 class GameListener:
   def on_game(self, game):
-    eventDispatcher = game.eventDispatcher
-
     while (False == game.is_ended()):
-      eventDispatcher.dispatch('control', game)
-      eventDispatcher.dispatch('rules', game)
-      eventDispatcher.dispatch('view', game)
-      eventDispatcher.dispatch('tick', game)
+      self.eventDispatcher.dispatch('control', game)
+      self.eventDispatcher.dispatch('rules', game)
+      self.eventDispatcher.dispatch('view', game)
+      self.eventDispatcher.dispatch('tick', game)

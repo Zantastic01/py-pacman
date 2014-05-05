@@ -1,4 +1,6 @@
-class EmptyViewListener:
+from ...listener import *
+
+class EmptyViewListener(Listener):
   def on_draw(self, event):
     (x, y, view) = event
     screen = view.screen

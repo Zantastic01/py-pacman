@@ -1,4 +1,6 @@
-class DotViewListener:
+from ...listener import *
+
+class DotViewListener(Listener):
   def on_draw(self, event):
     (x, y, view) = event
     screen = view.screen

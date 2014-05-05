@@ -1,7 +1,7 @@
 import pygame
-from .. import *
+from ...listener import *
 
-class PacmanControlListener:
+class PacmanControlListener(Listener):
   def on_control(self, game):
     pacman = game.pacman[0]
     if pacman.field.dot:
