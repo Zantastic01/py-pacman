@@ -1,10 +1,7 @@
 from ...listener import *
 
 class EmptyViewListener(Listener):
-  def on_draw(self, event):
-    (x, y, view) = event
-    screen = view.screen
-    emptyImage = view.emptyImage
+  def on_draw_element(self, event):
+    (x, y, field, view) = event
 
-    emptyRect = emptyImage.get_rect().move((x*view.WIDTH, y*view.HEIGHT))
-    screen.blit(emptyImage, emptyRect)
+    view.draw_empty(x, y)

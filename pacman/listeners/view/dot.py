@@ -1,10 +1,8 @@
 from ...listener import *
 
 class DotViewListener(Listener):
-  def on_draw(self, event):
-    (x, y, view) = event
-    screen = view.screen
-    dotImage = view.dotImage
+  def on_draw_element(self, event):
+    (x, y, field, view) = event
 
-    dotRect = dotImage.get_rect().move((x*view.WIDTH, y*view.HEIGHT))
-    screen.blit(dotImage, dotRect)
+    if field.dot:
+      view.draw_dot(x, y)

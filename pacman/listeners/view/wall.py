@@ -1,10 +1,8 @@
 from ...listener import *
 
 class WallViewListener(Listener):
-  def on_draw(self, event):
-    (x, y, view) = event
-    screen = view.screen
-    wallImage = view.wallImage
+  def on_draw_element(self, event):
+    (x, y, field, view) = event
 
-    wallRect = wallImage.get_rect().move((x*view.WIDTH, y*view.HEIGHT))
-    screen.blit(wallImage, wallRect)
+    if field.wall:
+      view.draw_wall(x, y)

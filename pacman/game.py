@@ -47,10 +47,14 @@ class Game:
 
 	def view_listeners(self):
 		self.eventDispatcher.add('view', ViewListener(), 'on_view')
-		self.eventDispatcher.add('draw_wall', WallViewListener(), 'on_draw')
-		self.eventDispatcher.add('draw_empty', EmptyViewListener(), 'on_draw')
-		self.eventDispatcher.add('draw_dot', DotViewListener(), 'on_draw')
-		self.eventDispatcher.add('draw_animal', AnimalViewListener(), 'on_draw')
+
+		self.eventDispatcher.add('draw_element', EmptyViewListener(), 'on_draw_element')
+		self.eventDispatcher.add('draw_element', WallViewListener(), 'on_draw_element')
+		self.eventDispatcher.add('draw_element', DotViewListener(), 'on_draw_element')
+		self.eventDispatcher.add('draw_element', FruitViewListener(), 'on_draw_element')
+
+		self.eventDispatcher.add('draw_animal', PacmanViewListener(), 'on_draw_animal')
+		self.eventDispatcher.add('draw_animal', MonsterViewListener(), 'on_draw_animal')
 
 	def is_ended(self):
 		return self.ended

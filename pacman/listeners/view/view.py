@@ -10,19 +10,10 @@ class ViewListener(Listener):
     for y in range(0, maxY):
       for x in range(0, maxX):
         field = board.get(x, y)
+        self.eventDispatcher.dispatch('draw_element', [x, y, field, view])
 
-        if field.wall == True:
-          self.eventDispatcher.dispatch('draw_wall', [x, y, view])
-        elif field.wall == False:
-          if field.dot == True:
-            self.eventDispatcher.dispatch('draw_dot', [x, y, view])
-          else:
-            self.eventDispatcher.dispatch('draw_empty', [x, y, view])
-
-    for monster in game.monsters:
-      self.eventDispatcher.dispatch('draw_animal', [monster, view.monsterImage, view])
-
-    for pacman in game.pacman:
-      self.eventDispatcher.dispatch('draw_animal', [pacman, view.pacmanImage, view])
+    animals = game.monsters + game.pacman
+    for animal in animals:
+      self.eventDispatcher.dispatch('draw_animal', [animal, view])
 
     view.draw();

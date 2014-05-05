@@ -6,6 +6,9 @@ class Field():
     self.animals = []
     self.neighbors = {}
     self.dot = True
+    if self.wall:
+      self.dot = False
+    self.fruit = None
 
   def set_neighbors(self, neighbors):
     self.neighbors = neighbors

@@ -4,6 +4,7 @@ from directions import *
 from eventdispatcher import *
 from field import *
 from fieldresolver import *
+from fruitresolver import *
 from game import *
 from listener import *
 from loadboard import *
