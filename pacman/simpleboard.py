@@ -54,7 +54,7 @@ class SimpleBoard(LoadBoard):
     fruits = [
       [1, 1, 0],
       [2, 1, 1],
-      [3, 1, 2]
+      [3, 27, 2]
     ]
 
     LoadBoard.__init__(self, rawBoard, monsters, pacman, fruits)

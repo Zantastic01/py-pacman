@@ -8,7 +8,8 @@ class View:
   wallImage = None
   emptyImage = None
   pacmanImage = None
-  monsterImage = None
+  monsterImageActive = None
+  monsterImageUnactive = None
   dotImage = None
   fruitImage = None
 
@@ -22,8 +23,8 @@ class View:
     self.wallImage = pygame.image.load('images/wall.png').convert()
     self.emptyImage = pygame.image.load('images/empty.png').convert()
     self.pacmanImage = pygame.image.load('images/pacman.png').convert()
-    self.monsterImage = pygame.image.load('images/monster.png').convert()
-    self.unactiveMonsterImage = pygame.image.load('images/unactive-monster.png').convert()
+    self.monsterImageActive = pygame.image.load('images/monster.png').convert()
+    self.monsterImageUnactive = pygame.image.load('images/unactive-monster.png').convert()
     self.dotImage = pygame.image.load('images/dot.png').convert()
 
     self.fruitImage = []
@@ -58,7 +59,11 @@ class View:
     self.draw_animal(pacman, self.pacmanImage)
 
   def draw_monster(self, monster):
-    self.draw_animal(monster, self.monsterImage)
+    image = self.monsterImageActive
+    if False == monster.active:
+      image = self.monsterImageUnactive
+
+    self.draw_animal(monster, image)
 
   def draw_fruit(self, x, y, fruitType):
     self.draw_image(x, y, self.fruitImage[fruitType])

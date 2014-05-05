@@ -45,6 +45,8 @@ class Game:
 		self.eventDispatcher.add('keypressed', endGameRuleListener, 'on_keypressed')
 		self.eventDispatcher.add('end_game', endGameRuleListener, 'on_end_game')
 
+		self.eventDispatcher.add('rules', FruitPowerListener(), 'on_rules')
+
 	def view_listeners(self):
 		self.eventDispatcher.add('view', ViewListener(), 'on_view')
 
