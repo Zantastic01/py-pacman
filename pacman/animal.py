@@ -6,6 +6,7 @@ class Animal:
     self.field = field
     self.direction = direction
     self.newDirection = self.direction
+    self.frame = 0
 
   def next_field(self):
     availableNeighbors = self.field.get_available_neighbors()

@@ -12,4 +12,5 @@ from monster import *
 from monsterresolver import *
 from pacman import *
 from simpleboard import *
+from spritefactory import *
 from view import *

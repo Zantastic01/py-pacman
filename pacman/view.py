@@ -1,17 +1,12 @@
 import pygame
+from spritefactory import *
 
 class View:
-  WIDTH = 24
-  HEIGHT = 24
+  WIDTH = 36
+  HEIGHT = 36
   screen = None
   board = None
-  wallImage = None
-  emptyImage = None
-  pacmanImage = None
-  monsterImageActive = None
-  monsterImageUnactive = None
-  dotImage = None
-  fruitImage = None
+  sprites = []
 
   def __init__(self, board):
     self.board = board
@@ -19,18 +14,7 @@ class View:
     pygame.init()
     pygame.display.set_caption("cat-man by marcin")
     self.screen = pygame.display.set_mode((1024, 768))
-
-    self.wallImage = pygame.image.load('images/wall.png').convert()
-    self.emptyImage = pygame.image.load('images/empty.png').convert()
-    self.pacmanImage = pygame.image.load('images/pacman.png').convert()
-    self.monsterImageActive = pygame.image.load('images/monster.png').convert()
-    self.monsterImageUnactive = pygame.image.load('images/unactive-monster.png').convert()
-    self.dotImage = pygame.image.load('images/dot.png').convert()
-
-    self.fruitImage = []
-    self.fruitImage.append(pygame.image.load('images/fruit1.png').convert())
-    self.fruitImage.append(pygame.image.load('images/fruit2.png').convert())
-    self.fruitImage.append(pygame.image.load('images/fruit3.png').convert())
+    self.sprites = SpriteFactory('images/sprites.png', self.WIDTH, self.HEIGHT).get_sprites()
 
   def draw_animal(self, animal, image):
     x = animal.field.x
@@ -56,30 +40,49 @@ class View:
     self.screen.blit(image, wallRect)
 
   def draw_pacman(self, pacman):
-    self.draw_animal(pacman, self.pacmanImage)
+    rotate = {
+      'top': 90,
+      'bottom': -90,
+      'left': -180,
+      'right': 0
+    }
+
+    pacmanImage = self.sprites['pacman'][pacman.frame]
+    if pacman.direction in rotate.keys():
+      pacmanImage = pygame.transform.rotate(pacmanImage, rotate[pacman.direction])
+
+    self.draw_animal(pacman, pacmanImage)
+
+    pacman.frame += 1
+    if (pacman.frame > len(self.sprites['pacman'])-1):
+      pacman.frame = 0
 
   def draw_monster(self, monster):
-    image = self.monsterImageActive
+    image = self.sprites['monster'][1][monster.frame]
     if False == monster.active:
-      image = self.monsterImageUnactive
+      image = self.sprites['monster'][1][monster.frame]
 
     self.draw_animal(monster, image)
+    monster.frame += 1
+    if (monster.frame > len(self.sprites['monster'][1])-1):
+      monster.frame = 0
 
   def draw_fruit(self, x, y, fruitType):
-    self.draw_image(x, y, self.fruitImage[fruitType])
+    self.draw_image(x, y, self.sprites['fruits'][fruitType])
 
   def draw_empty(self, x, y):
-    self.draw_image(x, y, self.emptyImage)
+    self.draw_image(x, y, self.sprites['empty'])
 
   def draw_wall(self, x, y):
-    self.draw_image(x, y, self.wallImage)
+    self.draw_image(x, y, self.sprites['wall'])
 
   def draw_dot(self, x, y):
-    self.draw_image(x, y, self.dotImage)
+    self.draw_image(x, y, self.sprites['dot'])
 
   def draw_image(self, x, y, image):
     imageRect = image.get_rect().move((x*self.WIDTH, y*self.HEIGHT))
     self.screen.blit(image, imageRect)
 
   def draw(self):
-    pygame.display.update()   
+    pygame.display.update()
+    self.screen.fill((0, 0, 0))
