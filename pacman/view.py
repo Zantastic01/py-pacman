@@ -16,6 +16,12 @@ class View:
     self.screen = pygame.display.set_mode((1024, 768))
     self.sprites = SpriteFactory('images/sprites.png', self.WIDTH, self.HEIGHT).get_sprites()
 
+  def search_sprite(self, name):
+    for sprite in self.sprites:
+      if sprite.name == name:
+        return sprite
+    return None
+
   def draw_animal(self, animal, image):
     x = animal.field.x
     y = animal.field.y
@@ -47,37 +53,31 @@ class View:
       'right': 0
     }
 
-    pacmanImage = self.sprites['pacman'][pacman.frame]
+    pacmanImage = self.search_sprite('pacman').next_frame(pacman)
     if pacman.direction in rotate.keys():
       pacmanImage = pygame.transform.rotate(pacmanImage, rotate[pacman.direction])
 
     self.draw_animal(pacman, pacmanImage)
 
-    pacman.frame += 1
-    if (pacman.frame > len(self.sprites['pacman'])-1):
-      pacman.frame = 0
 
   def draw_monster(self, monster):
-    image = self.sprites['monster'][1][monster.frame]
+    image = self.search_sprite('monster1').next_frame(monster)
     if False == monster.active:
-      image = self.sprites['monster'][1][monster.frame]
+      image = self.search_sprite('monster1').next_frame(monster)
 
     self.draw_animal(monster, image)
-    monster.frame += 1
-    if (monster.frame > len(self.sprites['monster'][1])-1):
-      monster.frame = 0
 
   def draw_fruit(self, x, y, fruitType):
-    self.draw_image(x, y, self.sprites['fruits'][fruitType])
+    self.draw_image(x, y, self.search_sprite('fruit' + str(fruitType)).get_frame(0))
 
   def draw_empty(self, x, y):
-    self.draw_image(x, y, self.sprites['empty'])
+    self.draw_image(x, y, self.search_sprite('empty').get_frame(0))
 
   def draw_wall(self, x, y):
-    self.draw_image(x, y, self.sprites['wall'])
+    self.draw_image(x, y, self.search_sprite('wall').get_frame(0))
 
   def draw_dot(self, x, y):
-    self.draw_image(x, y, self.sprites['dot'])
+    self.draw_image(x, y, self.search_sprite('dot').get_frame(0))
 
   def draw_image(self, x, y, image):
     imageRect = image.get_rect().move((x*self.WIDTH, y*self.HEIGHT))
