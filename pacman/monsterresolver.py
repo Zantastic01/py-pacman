@@ -8,5 +8,6 @@ class MonsterResolver:
   def resolve(self):
     for monster in self.monsters:
       field = self.board.get(monster[0], monster[1])
-      monster = Monster(field)
-      field.add_animal(monster)
+      newMonster = Monster(field)
+      newMonster.monsterType = monster[2]
+      field.add_animal(newMonster)

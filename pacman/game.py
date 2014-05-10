@@ -50,6 +50,8 @@ class Game:
 	def view_listeners(self):
 		self.eventDispatcher.add('view', ViewListener(), 'on_view')
 
+		self.eventDispatcher.add('draw_info', ScoreViewListener(), 'on_draw_info')
+
 		self.eventDispatcher.add('draw_element', EmptyViewListener(), 'on_draw_element')
 		self.eventDispatcher.add('draw_element', WallViewListener(), 'on_draw_element')
 		self.eventDispatcher.add('draw_element', DotViewListener(), 'on_draw_element')

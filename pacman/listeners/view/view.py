@@ -16,4 +16,6 @@ class ViewListener(Listener):
     for animal in animals:
       self.eventDispatcher.dispatch('draw_animal', [animal, view])
 
+    self.eventDispatcher.dispatch('draw_info', game)
+
     view.draw();

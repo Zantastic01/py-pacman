@@ -4,6 +4,8 @@ from spritefactory import *
 class View:
   WIDTH = 36
   HEIGHT = 36
+  boardShiftX = 0
+  boardShiftY = int(HEIGHT + (HEIGHT/2))
   screen = None
   board = None
   sprites = []
@@ -42,7 +44,7 @@ class View:
     wallRectX = (x*self.WIDTH) + widthShift
     wallRectY = (y*self.HEIGHT) + heightShift
 
-    wallRect = image.get_rect().move((wallRectX, wallRectY))
+    wallRect = image.get_rect().move((self.boardShiftX + wallRectX, self.boardShiftY + wallRectY))
     self.screen.blit(image, wallRect)
 
   def draw_pacman(self, pacman):
@@ -61,9 +63,11 @@ class View:
 
 
   def draw_monster(self, monster):
-    image = self.search_sprite('monster1').next_frame(monster)
+    spriteName = 'monster' + str(monster.monsterType)
+    print spriteName
+    image = self.search_sprite(spriteName).next_frame(monster)
     if False == monster.active:
-      image = self.search_sprite('monster1').next_frame(monster)
+      image = self.search_sprite(spriteName).next_frame(monster)
 
     self.draw_animal(monster, image)
 
@@ -80,8 +84,16 @@ class View:
     self.draw_image(x, y, self.search_sprite('dot').get_frame(0))
 
   def draw_image(self, x, y, image):
-    imageRect = image.get_rect().move((x*self.WIDTH, y*self.HEIGHT))
+    imageRect = image.get_rect().move(((x*self.WIDTH) + self.boardShiftX, (y*self.HEIGHT)+self.boardShiftY))
     self.screen.blit(image, imageRect)
+
+  def draw_info(self, x, y, text):
+    font = pygame.font.Font('freesansbold.ttf', 22)
+    textSurface = font.render(text, True, (255, 255, 255), (0, 0, 0))
+    textRect = textSurface.get_rect()
+    textRect.left = x
+    textRect.top = y
+    self.screen.blit(textSurface, textRect)
 
   def draw(self):
     pygame.display.update()

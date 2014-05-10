@@ -1,7 +1,7 @@
 class Animal:
   SPEED = 40
 
-  def __init__(self, field, direction = None):
+  def __init__(self, field, direction = 'right'):
     self.shift = 0
     self.field = field
     self.direction = direction
