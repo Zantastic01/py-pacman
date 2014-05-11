@@ -3,6 +3,7 @@ from listeners import *
 
 class Game:
 	eventDispatcher = EventDispatcher();
+	lifes = 3
 	monsters = []
 	pacman = []
 	board = None
@@ -42,6 +43,7 @@ class Game:
 
 		endGameRuleListener = EndGameRuleListener()
 		self.eventDispatcher.add('rules', endGameRuleListener, 'on_rules')
+		self.eventDispatcher.add('pacman_collision', endGameRuleListener, 'on_pacman_collision')
 		self.eventDispatcher.add('keypressed', endGameRuleListener, 'on_keypressed')
 		self.eventDispatcher.add('end_game', endGameRuleListener, 'on_end_game')
 
@@ -51,6 +53,7 @@ class Game:
 		self.eventDispatcher.add('view', ViewListener(), 'on_view')
 
 		self.eventDispatcher.add('draw_info', ScoreViewListener(), 'on_draw_info')
+		self.eventDispatcher.add('draw_info', LifeViewListener(), 'on_draw_info')
 
 		self.eventDispatcher.add('draw_element', EmptyViewListener(), 'on_draw_element')
 		self.eventDispatcher.add('draw_element', WallViewListener(), 'on_draw_element')

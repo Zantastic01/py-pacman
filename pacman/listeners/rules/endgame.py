@@ -9,7 +9,16 @@ class EndGameRuleListener(Listener):
 
     collisions = Rules().get_collision(pacman, Monster)
     if len(collisions) > 0:
+      self.eventDispatcher.dispatch('pacman_collision', game)
+
+  def on_pacman_collision(self, game):
+    game.lifes -= 1
+    if game.lifes <= 0:
       self.eventDispatcher.dispatch('end_game', game)
+
+    game.pacman[0].setStartField()
+    for monster in game.monsters:
+      monster.setStartField()
 
   def on_keypressed(self, event):
     (key, game) = event

@@ -1,4 +1,3 @@
-from pygame import *
 from ...listener import *
 
 class ScoreViewListener(Listener):

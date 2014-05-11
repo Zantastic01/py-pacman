@@ -1,6 +1,7 @@
 from dot import *
 from empty import *
 from fruit import *
+from life import *
 from monster import *
 from pacman import *
 from score import *

@@ -64,10 +64,9 @@ class View:
 
   def draw_monster(self, monster):
     spriteName = 'monster' + str(monster.monsterType)
-    print spriteName
     image = self.search_sprite(spriteName).next_frame(monster)
     if False == monster.active:
-      image = self.search_sprite(spriteName).next_frame(monster)
+      image = self.search_sprite(spriteName + 'g').next_frame(monster)
 
     self.draw_animal(monster, image)
 
@@ -94,6 +93,11 @@ class View:
     textRect.left = x
     textRect.top = y
     self.screen.blit(textSurface, textRect)
+
+  def draw_life(self, x, y):
+    pacmanImage = self.search_sprite('pacman').get_frame(3)
+    imageRect = pacmanImage.get_rect().move((x, y))
+    self.screen.blit(pacmanImage, imageRect)
 
   def draw(self):
     pygame.display.update()

@@ -38,6 +38,7 @@ class FruitPowerListener(Listener):
 
     for monster in game.monsters:
       monster.active = False
+      monster.SPEED = 20
 
   def deactivate_fruit_mode(self, game):
       self.eventDispatcher.remove('rules', {
@@ -48,3 +49,4 @@ class FruitPowerListener(Listener):
 
       for monster in game.monsters:
         monster.active = True
+        monster.SPEED = 40
