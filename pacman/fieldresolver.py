@@ -20,5 +20,8 @@ class FieldResolver:
       if neighbor != None and neighbor.wall == False:
         neighbors[direction] = neighbor
 
+    if allNeighbors['right'] == None:
+      neighbors['right'] = self.board.get(0, field.y)
+
     field.set_neighbors(neighbors)
 
