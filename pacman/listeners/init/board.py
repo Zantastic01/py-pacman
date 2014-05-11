@@ -7,6 +7,8 @@ class BoardInitListener(Listener):
 
     for row in game.board.fields:
       for cell in row:
+        if None != cell.fruit:
+          game.maxFruits += 1
         if False == cell.wall:
           game.maxDots += 1
         for animal in cell.animals:

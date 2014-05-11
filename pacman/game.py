@@ -10,6 +10,7 @@ class Game:
 	ended = False
 	view = None
 	maxDots = 0
+	maxFruits = 0
 
 	def __init__(self):
 		self.init_listeners()
@@ -55,10 +56,13 @@ class Game:
 		self.eventDispatcher.add('draw_info', ScoreViewListener(), 'on_draw_info')
 		self.eventDispatcher.add('draw_info', LifeViewListener(), 'on_draw_info')
 
+		fruitViewListener = FruitViewListener()
+		self.eventDispatcher.add('draw_info', fruitViewListener, 'on_draw_info')
+
 		self.eventDispatcher.add('draw_element', EmptyViewListener(), 'on_draw_element')
 		self.eventDispatcher.add('draw_element', WallViewListener(), 'on_draw_element')
 		self.eventDispatcher.add('draw_element', DotViewListener(), 'on_draw_element')
-		self.eventDispatcher.add('draw_element', FruitViewListener(), 'on_draw_element')
+		self.eventDispatcher.add('draw_element', fruitViewListener, 'on_draw_element')
 
 		self.eventDispatcher.add('draw_animal', PacmanViewListener(), 'on_draw_animal')
 		self.eventDispatcher.add('draw_animal', MonsterViewListener(), 'on_draw_animal')

@@ -99,6 +99,11 @@ class View:
     imageRect = pacmanImage.get_rect().move((x, y))
     self.screen.blit(pacmanImage, imageRect)
 
+  def draw_info_fruit(self, x, y):
+    fruitImage = self.search_sprite('fruit1').get_frame(0)
+    imageRect = fruitImage.get_rect().move((x, y))
+    self.screen.blit(fruitImage, imageRect)
+
   def draw(self):
     pygame.display.update()
     self.screen.fill((0, 0, 0))
