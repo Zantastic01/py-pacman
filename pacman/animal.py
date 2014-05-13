@@ -5,6 +5,7 @@ class Animal:
     self.shift = 0
     self.startField = field
     self.field = field
+    self.startDirection = direction
     self.direction = direction
     self.newDirection = self.direction
     self.frame = 0
@@ -19,3 +20,4 @@ class Animal:
     self.field.animals.remove(self)
     self.field = self.startField
     self.field.animals.append(self)
+    self.direction = self.startDirection

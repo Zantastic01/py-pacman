@@ -11,10 +11,17 @@ class EndGameRuleListener(Listener):
     if len(collisions) > 0:
       self.eventDispatcher.dispatch('pacman_collision', game)
 
+    if game.maxDots == pacman.dots:
+      self.eventDispatcher.dispatch('end_game', game)
+      self.eventDispatcher.dispatch('pacman_win', game)
+
   def on_pacman_collision(self, game):
+    self.eventDispatcher.dispatch('pacman_lost_life', game)
+
     game.lifes -= 1
     if game.lifes <= 0:
       self.eventDispatcher.dispatch('end_game', game)
+      self.eventDispatcher.dispatch('pacman_lost', game)
 
     game.pacman[0].setStartField()
     for monster in game.monsters:

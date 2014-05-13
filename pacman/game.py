@@ -67,5 +67,11 @@ class Game:
 		self.eventDispatcher.add('draw_animal', PacmanViewListener(), 'on_draw_animal')
 		self.eventDispatcher.add('draw_animal', MonsterViewListener(), 'on_draw_animal')
 
+		messagesViewListener = MessagesViewListener()
+		self.eventDispatcher.add('pacman_win', messagesViewListener, 'on_pacman_win')
+		self.eventDispatcher.add('pacman_lost', messagesViewListener, 'on_pacman_lost')
+		self.eventDispatcher.add('init', messagesViewListener, 'on_init')
+		self.eventDispatcher.add('pacman_lost_life', messagesViewListener, 'on_pacman_lost_life')
+
 	def is_ended(self):
 		return self.ended

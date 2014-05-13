@@ -15,7 +15,7 @@ class View:
 
     pygame.init()
     pygame.display.set_caption("cat-man by marcin")
-    self.screen = pygame.display.set_mode((1024, 768))
+    self.screen = pygame.display.set_mode(((self.WIDTH*27)+self.boardShiftX, (self.HEIGHT*19)+self.boardShiftY))
     self.sprites = SpriteFactory('images/sprites.png', self.WIDTH, self.HEIGHT).get_sprites()
 
   def search_sprite(self, name):
@@ -93,6 +93,15 @@ class View:
     textRect.left = x
     textRect.top = y
     self.screen.blit(textSurface, textRect)
+
+  def draw_message(self, text):
+    font = pygame.font.Font('freesansbold.ttf', 48)
+    textSurface = font.render(text, True, (241, 196, 15), (0, 0, 0))
+    textRect = textSurface.get_rect()
+    textRect.centerx = self.screen.get_rect().centerx
+    textRect.centery = self.screen.get_rect().centery
+    self.screen.blit(textSurface, textRect)
+    self.draw()
 
   def draw_life(self, x, y):
     pacmanImage = self.search_sprite('pacman').get_frame(3)

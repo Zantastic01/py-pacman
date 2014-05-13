@@ -26,7 +26,7 @@ class FruitPowerListener(Listener):
 
       stop = datetime.today()
       interval = stop - self.start
-      if interval.seconds >= 20:
+      if interval.seconds >= 5:
         self.deactivate_fruit_mode(game)
 
   def activate_fruit_mode(self, game):
