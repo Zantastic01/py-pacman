@@ -1,4 +1,6 @@
 Python Pacman Clone
 ===================
 
-`python main.py`
+```
+  python main.py
+```
