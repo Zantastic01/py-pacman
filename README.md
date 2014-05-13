@@ -1,4 +1,4 @@
 Python Pacman Clone
 ===================
 
-in progress..
+`python main.py`
