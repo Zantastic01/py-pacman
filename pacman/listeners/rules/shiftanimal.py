@@ -7,7 +7,6 @@ class ShiftAnimalRuleListener(Listener):
       self.on_rule_animal(monster)
 
     for pacman in game.pacman:
-      print pacman.direction
       self.on_rule_animal(pacman)
 
   def on_rule_animal(self, animal):

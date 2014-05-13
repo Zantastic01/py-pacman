@@ -23,5 +23,4 @@ class PacmanControlListener(Listener):
       newDirection = 'bottom'
 
     if newDirection != None:
-      print 'Nowy kierunek!: ' + newDirection
       pacman.newDirection = newDirection
