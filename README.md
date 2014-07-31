@@ -1,4 +1,4 @@
-Python Pacman Clone
+Python Pacman (pygame)
 ===================
 
 ```
